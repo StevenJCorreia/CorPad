@@ -6,5 +6,8 @@
         <file>imgs/Open.bmp</file>
         <file>imgs/Paste.bmp</file>
         <file>imgs/Save.bmp</file>
+        <file>imgs/Exit.png</file>
+        <file>imgs/Print.png</file>
+        <file>imgs/Undo.png</file>
     </qresource>
 </RCC>
