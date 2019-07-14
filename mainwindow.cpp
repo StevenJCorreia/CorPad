@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("note1 - CorPad");
     this->setCentralWidget(ui->note);
 }
 
@@ -37,14 +38,14 @@ void MainWindow::on_actionNew_triggered()
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, "Open file");
+    QString fileName = QFileDialog::getOpenFileName(this, "Open file", QDir::currentPath(), "Text files (*.txt)");
     QFile file(fileName);
     currentFile = fileName;
     if(!file.open(QIODevice::ReadOnly | QFile::Text)) {
         QMessageBox::warning(this, "Warning", "Cannot open file: " + file.errorString());
         return;
     }
-    setWindowTitle(fileName);
+    setWindowTitle(fileName.split("/").back().split(".txt").front() + " - CorPad");
     QTextStream in(&file);
     QString text = in.readAll();
     ui->note->setText(text);
